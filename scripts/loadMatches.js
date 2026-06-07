@@ -1,4 +1,9 @@
 import { createClient } from "@supabase/supabase-js"
+import dotenv from "dotenv"
+
+dotenv.config({
+path: ".env.local"
+})
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -8,7 +13,8 @@ const supabase = createClient(
 function createMatch(
   home,
   away,
-  number
+  number,
+  group
 ) {
 
   return {
@@ -18,6 +24,9 @@ function createMatch(
 
     away_team:
       away,
+
+    group:
+      group,
 
     stage:
       "groups",
@@ -215,7 +224,9 @@ typeof teams[away] === "string"
 ? teams[away]
 : teams[away].name,
 
-number
+number,
+
+group
 
 )
 

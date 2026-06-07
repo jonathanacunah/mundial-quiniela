@@ -484,12 +484,7 @@ mb-5
 
 🏆 Grupo {
 
-String.fromCharCode(
-65 +
-Math.floor(
-index / 6
-)
-)
+match.group
 
 }
 
