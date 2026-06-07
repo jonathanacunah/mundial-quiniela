@@ -14,6 +14,15 @@ export default function Home() {
           👉 Hacer mis predicciones
         </a>
 
+      <a
+        className="block p-3 border rounded"
+        href="/my-predictions"
+      >
+
+      📋 Mi Quiniela
+
+</a>
+
         <a className="block p-3 border rounded" href="/admin">
           ⚙️ Panel admin
         </a>
