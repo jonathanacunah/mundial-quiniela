@@ -8,10 +8,45 @@ export default function Admin() {
   const [matches, setMatches] = useState([])
   const [winner, setWinner] = useState("")
   const [topScorer, setTopScorer] = useState("")
+  const [password, setPassword] = useState("")
+  const [authorized, setAuthorized] = useState(false)
 
   useEffect(() => {
     loadMatches()
   }, [])
+
+function unlockAdmin() {
+
+console.log(
+process.env
+.NEXT_PUBLIC_ADMIN_PASSWORD
+)
+
+if (
+
+password
+===
+
+process.env
+.NEXT_PUBLIC_ADMIN_PASSWORD
+
+) {
+
+setAuthorized(
+true
+)
+
+}
+
+else {
+
+alert(
+"Contraseña incorrecta"
+)
+
+}
+
+}
 
   async function loadMatches() {
     const { data } =
@@ -101,6 +136,85 @@ export default function Admin() {
 
   }
 
+if (
+
+!authorized
+
+) {
+
+return (
+
+<main
+className="
+p-10
+max-w-md
+mx-auto
+"
+>
+
+<h1
+className="
+text-3xl
+font-bold
+mb-6
+"
+>
+
+🔒 Admin
+
+</h1>
+
+<input
+
+type="password"
+
+value={
+password
+}
+
+onChange={
+(e)=>
+setPassword(
+e.target.value
+)
+}
+
+placeholder="Contraseña"
+
+className="
+border
+p-3
+rounded
+w-full
+mb-4
+"
+/>
+
+<button
+
+onClick={
+unlockAdmin
+}
+
+className="
+bg-green-600
+text-white
+px-4
+py-2
+rounded
+"
+
+>
+
+Entrar
+
+</button>
+
+</main>
+
+)
+
+}
 
   return (
     <main className="p-6">
