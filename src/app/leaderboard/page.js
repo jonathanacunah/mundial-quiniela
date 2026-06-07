@@ -16,26 +16,55 @@ function calculatePoints(pred, match) {
   }
 
   const predDiff =
-    pred.home_score_pred -
-    pred.away_score_pred
+pred.home_score_pred -
+pred.away_score_pred
 
-  const realDiff =
-    match.home_score_real -
-    match.away_score_real
+const realDiff =
+match.home_score_real -
+match.away_score_real
 
-  if (predDiff === realDiff) {
-    return 3
-  }
+const predWinner =
+Math.sign(
+predDiff
+)
 
-  const predWinner =
-    Math.sign(predDiff)
+const realWinner =
+Math.sign(
+realDiff
+)
 
-  const realWinner =
-    Math.sign(realDiff)
+if (
 
-  if (predWinner === realWinner) {
-    return 1
-  }
+predWinner
+===
+
+realWinner
+
+) {
+
+if (
+
+predWinner
+!==
+
+0
+
+&&
+
+predDiff
+===
+
+realDiff
+
+) {
+
+return 3
+
+}
+
+return 1
+
+}
 
   return 0
 }
